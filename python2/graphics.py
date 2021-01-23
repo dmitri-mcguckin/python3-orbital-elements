@@ -18,9 +18,9 @@ def plotEarth():
     Earth_radius = 6371 # km
     global max_radius
     max_radius = max(max_radius, Earth_radius)
-    
-    # Coefficients in a0/c x**2 + a1/c y**2 + a2/c z**2 = 1 
-    coefs = (1, 1, 1)  
+
+    # Coefficients in a0/c x**2 + a1/c y**2 + a2/c z**2 = 1
+    coefs = (1, 1, 1)
 
     # Radii corresponding to the coefficients:
     rx, ry, rz = [Earth_radius/np.sqrt(coef) for coef in coefs]
@@ -39,7 +39,7 @@ def plotEarth():
     ax.plot_surface(x, y, z,  rstride=4, cstride=4, color='g')
 
 
-def plotOrbit(semi_major_axis, eccentricity=0, inclination=0, 
+def plotOrbit(semi_major_axis, eccentricity=0, inclination=0,
               right_ascension=0, argument_perigee=0, true_anomaly=0, label=None):
     "Draws orbit around an earth in units of kilometers."
     # Rotation matrix for inclination
@@ -52,10 +52,10 @@ def plotOrbit(semi_major_axis, eccentricity=0, inclination=0,
     rot = (right_ascension + argument_perigee) * pi/180
     R2 = np.matrix([[cos(rot), -sin(rot), 0],
                     [sin(rot), cos(rot), 0],
-                    [0, 0, 1]    ])    
+                    [0, 0, 1]    ])
 
     ### Draw orbit
-    theta = np.linspace(0,2*pi, 360)
+    theta = np.linspace(0, 2*pi, 360)
     r = (semi_major_axis * (1-eccentricity**2)) / (1 + eccentricity*cos(theta))
 
     xr = r*cos(theta)
@@ -94,7 +94,7 @@ def plotOrbit(semi_major_axis, eccentricity=0, inclination=0,
     lat = np.arctan2(satz, c) * 180/pi
     lon = np.arctan2(saty, satx) * 180/pi
     print "%s : Lat: %g° Long: %g" % (label, lat, lon)
-    
+
     # Draw radius vector from earth
     # ax.plot([0, satx], [0, saty], [0, satz], 'r-')
     # Draw red sphere for satellite
@@ -111,6 +111,6 @@ def doDraw():
     # Adjustment of the axes, so that they all have the same span:
     for axis in 'xyz':
         getattr(ax, 'set_{}lim'.format(axis))((-max_radius, max_radius))
-    
+
     # Draw figure
     plt.show()

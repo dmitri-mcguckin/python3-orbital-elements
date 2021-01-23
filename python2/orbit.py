@@ -144,8 +144,8 @@ def pretty_print(tle, printInfo = True, labels = True):
                            right_ascension, argument_perigee, true_anomaly)
 
 def doChecksum(line):
-    """The checksums for each line are calculated by adding the all numerical digits on that line, including the 
-       line number. One is added to the checksum for each negative sign (-) on that line. All other non-digit 
+    """The checksums for each line are calculated by adding the all numerical digits on that line, including the
+       line number. One is added to the checksum for each negative sign (-) on that line. All other non-digit
        characters are ignored.
        @note this excludes last char for the checksum thats already there."""
     return sum(map(int, filter(lambda c: c >= '0' and c <= '9', line[:-1].replace('-','1')))) % 10
@@ -154,7 +154,7 @@ def doChecksum(line):
 # 1 25544U 98067A   08264.51782528 -.00002182  00000-0 -11606-4 0  2927
 # 2 25544  51.6416 247.4627 0006703 130.5360 325.0288 15.72125391563537"""
 
-# dragon = """DRAGON CRS-2            
+# dragon = """DRAGON CRS-2
 # 1 39115U 13010A   13062.62492353  .00008823  00000-0  14845-3 0   188
 # 2 39115  51.6441 272.5899 0012056 334.2535  68.5574 15.52501943   306"""
 
