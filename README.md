@@ -1,15 +1,19 @@
 # Orbital Elements
 
-A simple utility for calculating and plotting orbits from TLE's
+[![unit tests](https://img.shields.io/github/workflow/status/dmitri-mcguckin/python3-orbital-elements/Unit%20Tests?label=unit%20tests)](https://github.com/dmitri-mcguckin/python3-orbital-elements/actions?query=workflow%3A%22Unit+Tests%22)
+[![build](https://img.shields.io/github/workflow/status/dmitri-mcguckin/python3-orbital-elements/Deploy%20to%20PyPi)](https://github.com/dmitri-mcguckin/python3-orbital-elements/actions?query=workflow%3A%22Deploy+to+PyPi%22)
+[![issues](https://img.shields.io/github/issues/dmitri-mcguckin/python3-orbital-elements/bug)](https://github.com/dmitri-mcguckin/python3-orbital-elements/labels/bug)
+[![docs](https://img.shields.io/readthedocs/python3-orbital-elements)](https://python3-orbital-elements.readthedocs.io)
 
-***
+A simple utility for calculating orbits from [TLE's](https://en.wikipedia.org/wiki/Two-line_element_set) and plotting them with matplotlib.
 
-This is a fork of this [repo](https://github.com/Elucidation/OrbitalElements), rewritten in Python 3.
+This is a fork of this [repo](https://github.com/Elucidation/OrbitalElements), rewritten for Python 3.
 
 ***
 
 # Installation
 
+`$` `pip install orbital-elements`
 
 ***
 
