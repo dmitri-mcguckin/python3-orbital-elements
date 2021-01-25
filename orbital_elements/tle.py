@@ -41,7 +41,7 @@ class Tle:
         # Line 2
         self.inclination = float(lines[1][8:16])
         self.right_of_ascension = float(lines[1][17:25])
-        self.eccentricity = Tle.dpa_to_float(lines[1][26:33]) * 1e-1
+        self.eccentricity = float(lines[1][26:33]) * 0.0000001
         self.perigee = float(lines[1][34:42])
         self.mean_anomaly = float(lines[1][43:51])
         self.mean_motion = float(lines[1][52:63])
@@ -54,15 +54,15 @@ class Tle:
         date = dt.datetime(year=year, month=1, day=1, tzinfo=pytz.utc) \
             + dt.timedelta(days=self.epoch_day - 1)
 
-        elapsed_time = dt.datetime.now(pytz.utc) - date
-        elapsed_sec = elapsed_time.days * _SEC_PER_DAY \
-            + elapsed_time.seconds \
-            + (math.pow(10, -6) * elapsed_time.microseconds)
+        self.elapsed_time = dt.datetime.now(pytz.utc) - date
+        elapsed_sec = self.elapsed_time.days * _SEC_PER_DAY \
+            + self.elapsed_time.seconds \
+            + (math.pow(10, -6) * self.elapsed_time.microseconds)
 
         self.motion_per_second = self.mean_motion \
             * (_2PI * _SEC_PER_DAY)
         self.mean_anomaly += elapsed_sec * self.motion_per_second
-        self.period = _SEC_PER_DAY / self.mean_motion
+        self.period = _SEC_PER_DAY * (1 / self.mean_motion)
         self.semi_major_axis = (((self.period / _2PI) ** 2) * _GM) ** (1/3)
 
         # Eccentric Anomaly

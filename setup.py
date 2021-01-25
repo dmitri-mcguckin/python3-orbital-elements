@@ -22,6 +22,10 @@ setuptools.setup(
         "Topic :: Software Development :: User Interfaces",
     ],
     install_requires=[
+        "numpy",
+        "pytz",
+        "datetime2",
+        "matplotlib",
         "ConfigArgParse",
     ],
     extras_require={

@@ -1,5 +1,5 @@
 from __future__ import division, annotations
-from mpl_toolkits.mplot3d import Axes3D
+# from mpl_toolkits.mplot3d import Axes3D
 from .tle import Tle
 import numpy as np
 import matplotlib.pyplot as plt
@@ -53,19 +53,13 @@ def plot_orbit(label: str, tle: Tle) -> None:
     yr = r * np.sin(theta)
     zr = 0 * theta
 
-    import ipdb; ipdb.set_trace()
-    xr = (R * R2 * xr.T).T
-    # yr = (R * R2 * yr.T).T
-    # zr = (R * R2 * zr.T).T
+    pts = np.matrix([xr, yr, zr])  # Rotate by inclination
+    pts = (R * R2 * pts.T).T  # Rotate by ascension
 
-    # pts = np.matrix(zip(xr, yr, zr))  # Rotate by inclination
-    # import ipdb; ipdb.set_trace()
-    # pts = (R * R2 * pts.T).T  # Rotate by ascension
-
-    # # Convert to vectors
-    # xr, yr, zr = pts[:, 0].A.flatten(), \
-    #     pts[:, 1].A.flatten(), \
-    #     pts[:, 2].A.flatten()
+    # Convert to vectors
+    xr, yr, zr = pts[:, 0].A.flatten(), \
+        pts[:, 1].A.flatten(), \
+        pts[:, 2].A.flatten()
 
     # Calculate satellite position
 

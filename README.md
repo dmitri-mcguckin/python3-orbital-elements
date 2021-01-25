@@ -36,4 +36,4 @@ This creates a sym-link to your development environment, so there's no need to i
 
 ### Run
 
-`$` `orbital-elements`
+`$` `orbital-elements <tle-path>`
